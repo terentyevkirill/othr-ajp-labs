@@ -6,10 +6,10 @@ public enum Orientation {
     private static Orientation[] orientations = Orientation.values();
 
     public Orientation toRight() {
-        return null;
+        return orientations[(this.ordinal() + 1) % orientations.length];
     }
 
     public Orientation toLeft() {
-        return null;
+        return orientations[(orientations.length + this.ordinal() - 1) % orientations.length];
     }
 }
