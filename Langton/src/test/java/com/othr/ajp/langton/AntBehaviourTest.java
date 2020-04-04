@@ -1,4 +1,4 @@
-package com.ajp.langton;
+package com.othr.ajp.langton;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,10 +14,11 @@ public class AntBehaviourTest {
     public void initialValuesTest() {
         Ant ant = new Ant();
 
-        Assert.assertEquals("initial column not zero", 0, ant.getColumn());
-        Assert.assertEquals("initial row not zero", 0, ant.getRow());
+        Assert.assertEquals("initial column not zero", 0L, ant.column);
+        Assert.assertEquals("initial row not zero", 0L, ant.row);
         Assert.assertEquals("initial color not white", Color.WHITE, ant.getCurrentSquare().getColor());
-        Assert.assertEquals("initial orientation not north", Orientation.NORTH, ant.getOrientation());
+        Assert.assertEquals("initial orientation not north", Orientation.NORTH, ant.orientation);
+
     }
 
     private static Stream<Arguments> firstMovementParameters() {
@@ -39,18 +40,20 @@ public class AntBehaviourTest {
         Ant ant = new Ant();
 
         // set to test start values
-        ant.setOrientation(orientation);
-        ant.getCurrentSquare().setColor(color);
+        ant.orientation = orientation;
+        ant.getCurrentSquare().color = color;
+
         Square startSquare = ant.getCurrentSquare();
 
         ant.move();
 
-        // check output
-        Assert.assertEquals("wrong row after start from 0, 0 on a " + color.name() + " square facing " + orientation.name(), row, ant.getRow());
-        Assert.assertEquals("wrong column after start from 0, 0 on a " + color.name() + " square facing " + orientation.name(), column, ant.getColumn());
+        // check outcome
+        Assert.assertEquals("wrong row after start from 0, 0 on a " + color.name() + " square facing " + orientation.name(), row, ant.row);
+        Assert.assertEquals("wrong column after start from 0, 0 on a " + color.name() + " square facing " + orientation.name(), column, ant.column);
         Orientation newOrientation = color == Color.WHITE ? orientation.toRight() : orientation.toLeft();
-        Assert.assertEquals("wrong orientation after start from 0, 0 on a " + color.name() + " square facing " + orientation.name(), newOrientation, ant.getOrientation());
-        Assert.assertEquals("wring color after start from 0, 0 on a " + color.name() + " square facing " + orientation.name(), color.nextColor(), startSquare.getColor());
+        Assert.assertEquals("wrong orientation after start from 0, 0 on a " + color.name() + " square facing " + orientation.name(), newOrientation, ant.orientation);
+        Assert.assertEquals("wrong color of old square after start from 0, 0 on a " + color.name() + " square facing " + orientation.name(), color.nextColor(), startSquare.color);
+
     }
 
 }

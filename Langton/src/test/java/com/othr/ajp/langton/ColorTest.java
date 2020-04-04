@@ -1,6 +1,5 @@
-package com.ajp.langton;
+package com.othr.ajp.langton;
 
-import com.ajp.langton.Color;
 import org.junit.Assert;
 import org.junit.Test;
 

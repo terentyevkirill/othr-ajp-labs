@@ -1,13 +1,10 @@
-package com.ajp.langton;
+package com.othr.ajp.langton;
 
-import com.ajp.langton.Orientation;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static com.ajp.langton.Orientation.*;
-
 public class OrientationTest {
-    private Orientation[] orientations = new Orientation[]{NORTH, EAST, SOUTH, WEST};
+    private Orientation[] orientations = new Orientation[]{Orientation.NORTH, Orientation.EAST, Orientation.SOUTH, Orientation.WEST};
 
     @Test
     public void testToRight() {

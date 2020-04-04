@@ -1,9 +1,5 @@
-package com.ajp.langton;
+package com.othr.ajp.langton;
 
-import com.ajp.langton.Ant;
-import com.ajp.langton.Color;
-import com.ajp.langton.Orientation;
-import com.ajp.langton.Square;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,8 +11,8 @@ public class AntMovementTest {
         // before
         Square squareBefore = ant.getCurrentSquare();
         Color colorBefore = squareBefore.getColor();
-        int columnBefore = ant.getColumn();
-        int rowBefore = ant.getRow();
+        long columnBefore = ant.getColumn();
+        long rowBefore = ant.getRow();
         Orientation orientationBefore = ant.getOrientation();
 
         Assert.assertEquals("column before is not zero", 0, columnBefore);
@@ -30,8 +26,8 @@ public class AntMovementTest {
         Square squareAfter = ant.getCurrentSquare();
         Color colorAfterOnOldSquare = squareBefore.getColor();
         Color colorAfterOnNewSquare = squareAfter.getColor();
-        int columnAfter = ant.getColumn();
-        int rowAfter = ant.getRow();
+        long columnAfter = ant.getColumn();
+        long rowAfter = ant.getRow();
         Orientation orientationAfter = ant.getOrientation();
 
         Assert.assertEquals("color after of initial square is not black", Color.BLACK, colorAfterOnOldSquare);
