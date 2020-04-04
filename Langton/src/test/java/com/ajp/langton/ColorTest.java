@@ -1,4 +1,4 @@
-package de.ajp.langton.test;
+package com.ajp.langton;
 
 import com.ajp.langton.Color;
 import org.junit.Assert;
