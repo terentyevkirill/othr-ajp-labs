@@ -2,7 +2,7 @@ package game.dsl;
 
 import game.Game;
 
-public class BasicGameBuilder implements GameBuilder, PlayerBuilder {
+public class BasicGameBuilder implements GameBuilder, PlayerBuilder, LocationBuilder, SemiInterface, GameLocationBuilder, GameBuilderTerminator {
     private final BasicGame game;
     private Player player;
 
@@ -30,26 +30,31 @@ public class BasicGameBuilder implements GameBuilder, PlayerBuilder {
     }
 
     @Override
-    public LocationBuilder asMaster() {
+    public GameLocationBuilder asMaster() {
         game.setPlayerAsMaster(player);
         return this;
     }
 
     @Override
-    public Game setInSpace() {
+    public SemiInterface setInSpace() {
         game.setLocation("Space");
-        return game;
+        return this;
     }
 
     @Override
-    public Game setOnEarth() {
+    public SemiInterface setOnEarth() {
         game.setLocation("Earth");
-        return game;
+        return this;
     }
 
     @Override
-    public Game setUnderwater() {
+    public SemiInterface setUnderwater() {
         game.setLocation("Underwater");
+        return this;
+    }
+
+    @Override
+    public Game get() {
         return game;
     }
 }

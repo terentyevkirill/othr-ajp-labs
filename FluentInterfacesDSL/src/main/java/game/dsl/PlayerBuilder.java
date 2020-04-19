@@ -1,5 +1,5 @@
 package game.dsl;
 
-public interface PlayerBuilder extends LocationBuilder {
-    LocationBuilder asMaster();
+public interface PlayerBuilder extends GameBuilder, LocationBuilder, GameBuilderTerminator{
+    GameLocationBuilder asMaster();
 }

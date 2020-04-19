@@ -1,5 +1,7 @@
 package game.dsl;
 
+import game.Game;
+
 public interface GameBuilder {
     PlayerBuilder player(PlayerDetail... details);
 
@@ -7,4 +9,5 @@ public interface GameBuilder {
         return new BasicGameBuilder();
     }
 
+    Game get();
 }

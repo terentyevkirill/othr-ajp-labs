@@ -1,10 +1,9 @@
 package game.dsl;
 
-import game.Game;
 
-public interface LocationBuilder extends GameBuilder {
-    Game setInSpace();
-    Game setOnEarth();
-    Game setUnderwater();
+public interface LocationBuilder extends GameBuilderTerminator {
+    SemiInterface setInSpace();
+    SemiInterface setOnEarth();
+    SemiInterface setUnderwater();
 }
 

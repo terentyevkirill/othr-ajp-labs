@@ -8,8 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class BasicGame implements Game {
-    private final List<Player> players = new ArrayList<>();
-    private String location = "";
+    static final String NO_LOCATION = "nowhere";
+    private List<Player> players = new ArrayList<>();
+    private String location = NO_LOCATION;
 
     BasicGame() {
     }
@@ -23,7 +24,10 @@ public class BasicGame implements Game {
     }
 
     public void setLocation(String location) {
-        this.location = location;
+        if (NO_LOCATION.equals(this.location))
+            this.location = location;
+        else
+            throw new IllegalArgumentException("Location has already been set to " + this.location);
     }
 
     @Override
