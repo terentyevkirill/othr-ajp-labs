@@ -11,8 +11,20 @@ public class BasicGameBuilder implements GameBuilder, PlayerBuilder {
     }
 
     @Override
-    public PlayerBuilder player(String name) {
-        player = new BasicPlayer(name);
+    public PlayerBuilder player(PlayerDetail... details) {
+        player = new BasicPlayer();
+        for (PlayerDetail<?> detail : details) {
+            switch (detail.attributeType) {
+                case NAME:
+                    player.setName((String) detail.getAttribute());
+                    break;
+                case LEVEL:
+                    player.setLevel((Integer) detail.getAttribute());
+                    break;
+                case AGE:
+                    player.setAge((Integer) detail.getAttribute());
+            }
+        }
         game.addPlayer(player);
         return this;
     }
