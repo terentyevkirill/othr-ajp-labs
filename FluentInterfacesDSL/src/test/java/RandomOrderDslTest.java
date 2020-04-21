@@ -28,9 +28,25 @@ public class RandomOrderDslTest {
                     .player(name("Mary")).asMaster()
                     .player()
                     .get();
+            Game recursiveGame = Game.create()
+                    .player(name("Brent"), age(27), level(3))
+                    .player(name("Sue"), level(10))
+                    .setOnEarth()
+                    .player(name("Mary")).asMaster()
+                    .player()
+                    .adversary(Game.create()
+                            .player(name("Capt.	Kirk"), age(99))
+                            .setInSpace()
+                            .player(name("Kahn"))
+                            .adversary(Game.create()
+                                    .player(level(1000))
+                                    .get())
+                            .get())
+                    .get();
             System.out.println(game1);
             System.out.println(game2);
             System.out.println(game3);
+            System.out.println(recursiveGame);
         } catch (Throwable t) {
             Assertions.fail("DSL Runtime Error", t);
         }

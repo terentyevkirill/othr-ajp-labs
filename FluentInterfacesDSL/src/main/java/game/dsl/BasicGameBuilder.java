@@ -57,4 +57,10 @@ public class BasicGameBuilder implements GameBuilder, PlayerBuilder, LocationBui
     public Game get() {
         return game;
     }
+
+    @Override
+    public SemiInterface adversary(Game adversaryGame) {
+        this.game.addAdversary(adversaryGame);
+        return this;
+    }
 }
