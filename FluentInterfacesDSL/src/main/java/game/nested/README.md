@@ -1,7 +1,7 @@
 # "Nested" Grammar
 
-Now lets slightly change how `Player`s’ attributes are added. 
-See the following syntax diagram and code snippet in order to change your implementation.
+`Player`s’ attributes are added in more fluent way - with method nesting.
+Using imported static methods we can set specific attributes of `Player`s class.
 
 ## Grammar diagram
 

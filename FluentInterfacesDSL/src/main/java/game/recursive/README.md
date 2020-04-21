@@ -1,6 +1,6 @@
 # "Recursive" Grammar
 
-The last change to our grammar now allows for recursive adding of `Game` objects to the current `Game` object. (`Game`s are now supposed to be played against other `Game`s.)
+Allows recursive adding of `Game` objects to the current `Game` object. (`Game`s are now supposed to be played against other `Game`s (adversaries))
 
 
 ## Grammar diagram

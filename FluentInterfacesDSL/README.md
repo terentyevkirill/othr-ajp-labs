@@ -6,7 +6,7 @@ This game needs player objects, master-player details, and location information 
 This repository contains the sourcecode to the four different grammar levels: **Basic**, **Nested**, **RandomOrder**, and **Recursive**.
 
 Each solution is accessible here as a package representing the grammar level.
-Each solution is tested in corresponding Unit test;
+Each solution tested in corresponding Unit test;
 ## Grammar diagrams
 ### Basic Grammar:
 ![Basic Grammar](src/main/java/game/basic/Basic.jpg)
