@@ -8,12 +8,12 @@ This repository contains the sourcecode to the four different grammar levels: **
 Each solution is accessible here as a package representing the grammar level.
 Each solution is tested in corresponding Unit test;
 ## Grammar diagrams
-###Basic Grammar:
+### Basic Grammar:
 ![Basic Grammar](Basic.jpg)
-###Nested Methods Grammar:
+### Nested Methods Grammar:
 ![Nested Methods Grammar](Nested.jpg)
-###Random Order Grammar:
+### Random Order Grammar:
 ![Random Order Grammar](RandomOrder.jpg)
-###Recursive Grammar:
+### Recursive Grammar:
 ![Recursive Grammar](Recursive.jpg)
 
