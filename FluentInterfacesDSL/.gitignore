@@ -2,7 +2,7 @@
 *.iml
 target
 *.jpg
-!Basic.jpg
-!Nested.jpg
-!RandomOrder.jpg
-!Recursive.jpg
+!src/main/java/game/basic/Basic.jpg
+!src/main/java/game/nested/Nested.jpg
+!src/main/java/game/randomorder/RandomOrder.jpg
+!src/main/java/game/recursive/Recursive.jpg
