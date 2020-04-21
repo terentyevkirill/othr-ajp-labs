@@ -1,6 +1,6 @@
-package game.dsl;
+package game.recursive.dsl;
 
-import game.Game;
+import game.recursive.Game;
 
 public class BasicGameBuilder implements GameBuilder, PlayerBuilder, LocationBuilder, SemiInterface, GameLocationBuilder, GameBuilderTerminator {
     private final BasicGame game;

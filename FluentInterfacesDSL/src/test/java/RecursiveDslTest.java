@@ -1,14 +1,13 @@
+import game.recursive.Game;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import game.randomorder.Game;
 
-import static game.randomorder.Game.*;
+import static game.recursive.Game.*;
 
-
-public class RandomOrderDslTest {
+public class RecursiveDslTest {
 
     @Test
-    public void randomOrderDslTest() {
+    public void basicGameTest() {
         try {
             Game g = Game.create()
                     .player(name("Brent"), age(27), level(3))
@@ -16,6 +15,14 @@ public class RandomOrderDslTest {
                     .setOnEarth()
                     .player(name("Mary")).asMaster()
                     .player()
+                    .adversary(Game.create()
+                            .player(name("Capt.	Kirk"), age(99))
+                            .setInSpace()
+                            .player(name("Kahn"))
+                            .adversary(Game.create()
+                                    .player(level(1000))
+                                    .get())
+                            .get())
                     .get();
             System.out.println(g);
         } catch (Throwable t) {

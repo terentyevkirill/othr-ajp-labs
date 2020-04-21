@@ -1,25 +1,25 @@
+import game.nested.Game;
+
+import static game.nested.Game.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import game.randomorder.Game;
 
-import static game.randomorder.Game.*;
-
-
-public class RandomOrderDslTest {
+public class NestedDslTest {
 
     @Test
-    public void randomOrderDslTest() {
+    public void nestedDslTest() {
         try {
             Game g = Game.create()
                     .player(name("Brent"), age(27), level(3))
                     .player(name("Sue"), level(10))
-                    .setOnEarth()
                     .player(name("Mary")).asMaster()
                     .player()
-                    .get();
+                    .setUnderwater();
+
             System.out.println(g);
         } catch (Throwable t) {
-            Assertions.fail("DSL Runtime Error", t);
+            Assertions.fail("DSL Runtime Error");
         }
 
     }

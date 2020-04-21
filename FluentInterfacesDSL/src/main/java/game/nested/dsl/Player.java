@@ -1,4 +1,4 @@
-package game.dsl;
+package game.nested.dsl;
 
 public interface Player {
     String getName();

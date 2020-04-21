@@ -1,4 +1,4 @@
-package game.dsl;
+package game.recursive.dsl;
 
 public class PlayerDetail<A> {
 

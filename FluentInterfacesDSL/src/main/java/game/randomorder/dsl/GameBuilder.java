@@ -1,6 +1,5 @@
-package game.dsl;
-
-import game.Game;
+package game.randomorder.dsl;
+import game.randomorder.Game;
 
 public interface GameBuilder {
     PlayerBuilder player(PlayerDetail... details);

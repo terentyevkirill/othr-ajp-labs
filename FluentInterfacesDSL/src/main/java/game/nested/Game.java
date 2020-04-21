@@ -1,7 +1,7 @@
-package game;
+package game.nested;
 
-import game.dsl.GameBuilder;
-import game.dsl.PlayerDetail;
+import game.nested.dsl.GameBuilder;
+import game.nested.dsl.PlayerDetail;
 
 public interface Game {
     static GameBuilder create() {
@@ -17,5 +17,4 @@ public interface Game {
     static PlayerDetail level(int level) {
         return PlayerDetail.newInstance(level, PlayerDetail.PlayerDetailType.LEVEL);
     }
-
 }

@@ -1,4 +1,4 @@
-package game.dsl;
+package game.randomorder.dsl;
 
 public class BasicPlayer implements Player {
     private String name;
