@@ -2,9 +2,7 @@ package com.othr.ajp.reflections;
 
 import org.w3c.dom.ls.LSOutput;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.TypeVariable;
+import java.lang.reflect.*;
 import java.util.*;
 
 public class ClassPrinter {
@@ -42,23 +40,73 @@ public class ClassPrinter {
         }
         System.out.println();
 
-        // print class definition
+        // class definition
         StringBuilder sb = new StringBuilder();
         sb.append(getModifiersString(classPrinter.clazz.getModifiers(), classPrinter.clazz.getClass())).append(" ");
         sb.append(getClassNameString(classPrinter.clazz, false)).append(" ");
         sb.append("{\n\n");
 
-        // print fields
+        // fields
         sb.append("\t// Fields\n");
         classPrinter.getFieldsStrings().forEach(s -> sb.append("\t").append(s).append("\n"));
 
-        // print constructors
+        // constructors
         sb.append("\n\t// Constructors\n");
+        classPrinter.getConstructorsStrings().forEach(s -> sb.append("\t").append(s).append("\n"));
 
 
+        // methods
+        sb.append("\n\t// Methods\n");
+        classPrinter.getMethodsStrings().forEach(s -> sb.append("\t").append(s).append("\n"));
 
+
+        sb.append("}\n");
         System.out.println(sb.toString());
 
+    }
+
+    private List<String> getConstructorsStrings() {
+        return getExecutablesStrings(this.clazz.getDeclaredConstructors());
+    }
+
+    private List<String> getExecutablesStrings(Executable[] executables) {
+        List<String> result = new ArrayList<>();
+        for (Executable exe : executables) {
+            StringBuilder sb = new StringBuilder();
+            if (!exe.getDeclaringClass().equals(this.clazz))
+                continue;
+            sb.append(getModifiersString(exe.getModifiers(), Method.class)).append(" ");
+            if (exe instanceof Method)
+                sb.append(((Method) exe).getReturnType().getSimpleName()).append(" ");
+            if (exe instanceof Constructor)
+                sb.append(this.clazz.getSimpleName()).append("(");
+            else sb.append(exe.getName()).append("(");
+
+            if (exe.getParameterCount() > 0) {
+                for (Parameter p : exe.getParameters()) {
+                    sb.append(getSimpleTypeName(p.getParameterizedType().getTypeName())).append(" ");
+                    sb.append(p.getName()).append(", ");
+                }
+                sb.delete(sb.length() - 2, sb.length());
+            }
+            sb.append(");");
+            result.add(sb.toString());
+        }
+        return result;
+    }
+
+    private static String getSimpleTypeName(String extended) {
+        String[] tokens = extended.split("\\.");
+        if (tokens.length == 0)
+            return extended;
+        if (tokens.length == 1)
+            return extended;
+        return tokens[tokens.length - 1];
+    }
+
+
+    private List<String> getMethodsStrings() {
+        return getExecutablesStrings(this.clazz.getDeclaredMethods());
     }
 
     private List<String> getFieldsStrings() {
