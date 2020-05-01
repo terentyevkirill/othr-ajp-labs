@@ -1,6 +1,5 @@
 package com.othr.ajp.annotations;
 
-import org.w3c.dom.ls.LSOutput;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;

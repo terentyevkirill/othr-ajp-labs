@@ -4,3 +4,4 @@ target/**
 *.iml
 docs/**
 **/docs
+*.pdf
