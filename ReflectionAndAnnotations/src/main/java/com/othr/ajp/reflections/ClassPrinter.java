@@ -19,7 +19,6 @@ public class ClassPrinter {
     public static void main(String[] args) throws ClassNotFoundException {
         // read class name from command line or use given String
         String className = "java.util.LinkedHashMap";
-//        String className = "java.util.ArrayList";
 
         if (args.length > 0 && args[0].length() > 0) {
             className = args[0];
