@@ -29,18 +29,15 @@ public class Invocation {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Invocation{")
-                .append("self=").append(self)
-                .append(", method=").append(method);
+        sb.append("Invoke method: ").append(method)
+                .append(" on object: ").append(self);
         if (args.length > 0) {
-            sb.append(", args={");
+            sb.append(" with args: ");
             for (Object arg : args) {
                 sb.append(arg).append(",");
             }
             sb.delete(sb.length() - 1, sb.length());
-            sb.append("}");
         }
-        sb.append("}");
         return sb.toString();
     }
 

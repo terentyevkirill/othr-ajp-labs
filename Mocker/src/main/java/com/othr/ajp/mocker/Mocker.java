@@ -5,7 +5,6 @@ import javassist.util.proxy.MethodHandler;
 import javassist.util.proxy.ProxyFactory;
 
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,7 +55,7 @@ public class Mocker {
             } else {
                 invocations.put(invocation, 1);
             }
-            System.out.println(invocation + " - " + invocations.get(invocation) + " times.");
+            System.out.println(invocation);
         }
         Class returnType = method.getReturnType();
         if (returnType.equals(int.class) || returnType.equals(float.class) || returnType.equals(double.class) || returnType.equals(long.class)
@@ -105,7 +104,7 @@ public class Mocker {
             } else {
                 invocations.put(invocation, 1);
             }
-            System.out.println(invocation + " - " + invocations.get(invocation) + " times.");
+            System.out.println(invocation);
         }
         return proceed.invoke(self, args);
     };
