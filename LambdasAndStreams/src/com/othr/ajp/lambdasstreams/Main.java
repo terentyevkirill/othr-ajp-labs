@@ -1,9 +1,6 @@
 package com.othr.ajp.lambdasstreams;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -39,11 +36,8 @@ public class Main {
 //        cities.stream().max(Comparator.comparingInt(String::length)).ifPresent(System.out::println);
 
         // store length of longest (or shortest) city name (and print variable to check)
-//        AtomicInteger len = new AtomicInteger();
-//        cities.stream().max(Comparator.comparingInt(String::length)).ifPresent(s -> len.set(s.length()));
-        // cities.stream().min(Comparator.comparingInt(String::length)).ifPresent(s -> len.set(s.length()));
-//        System.out.println("length of longest name: " + len.get());
-        // System.out.println("length of shortest name: " + len.get());
+//        cities.stream().max(Comparator.comparingInt(String::length)).ifPresent(s -> System.out.println("length of longest name: " + s.length()));
+//        cities.stream().min(Comparator.comparingInt(String::length)).ifPresent(s -> System.out.println("length of shortest name: " + s.length()));;
 
         // reduce list of names to String of their initials
 //        System.out.print("Initials: ");
