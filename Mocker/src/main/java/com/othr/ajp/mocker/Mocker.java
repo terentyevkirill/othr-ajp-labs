@@ -114,7 +114,6 @@ public class Mocker {
         try {
             ProxyFactory factory = new ProxyFactory();
             factory.setSuperclass(target.getClass());
-            int ifsCount = target.getClass().getInterfaces().length;
             factory.setInterfaces(target.getClass().getInterfaces());
             factory.setHandler(spyHandler);
             factory.setFilter(filter);
