@@ -75,34 +75,38 @@ public class Main {
         // store a Map<Character,Long> with number of cities grouped by their initials (and print to check)
         System.out.println("store a Map<Character,Long> with number of cities grouped by their initials (and print to check):");
         Map<Character, Long> result = cities.stream()
-                .collect(groupingBy(s -> s.charAt(0), counting()));
-        result.forEach((k, v) -> System.out.println(k + ": " + v));
+                .map(s -> s.charAt(0))
+                .collect(groupingBy(Function.identity(), counting()));
+        result.entrySet().forEach(System.out::println);
         System.out.println("----------------------------------------------------");
 
         // as above but do not store but print directly to console
         System.out.println("as above but do not store but print directly to console:");
         cities.stream()
-                .collect(groupingBy(s -> s.charAt(0), counting()))
-                .forEach((k, v) -> System.out.println(k + ": " + v));
+                .map(name -> name.charAt(0))
+                .collect(groupingBy(Function.identity(), counting()))
+                .entrySet()
+                .forEach(System.out::println);
         System.out.println("----------------------------------------------------");
 
         // as above but print map sorted by value
         System.out.println("as above but print map sorted by value:");
-        result = cities.stream()
-                .collect(groupingBy(s -> s.charAt(0), counting()));
-        result = result.entrySet()
+        cities.stream()
+                .map(name -> name.charAt(0))
+                .collect(groupingBy(Function.identity(), counting()))
+                .entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
-                .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-        result.forEach((k, v) -> System.out.println(k + ": " + v));
+                .forEach(System.out::println);
         System.out.println("----------------------------------------------------");
 
         // count number of letters in city names and print table to console sorted by key:
         System.out.println("count number of letters in city names and print table to console sorted by key:");
-        result = cities.stream()
+        cities.stream()
                 .map(s -> s.chars().mapToObj(c -> (char) c).toArray(Character[]::new)).flatMap(Arrays::stream)
-                .collect(groupingBy(Function.identity(), counting()));
-        result.forEach((k, v) -> System.out.println(k + ": " + v));
+                .collect(groupingBy(Function.identity(), counting()))
+                .entrySet()
+                .forEach(System.out::println);
         System.out.println("----------------------------------------------------");
     }
 }
