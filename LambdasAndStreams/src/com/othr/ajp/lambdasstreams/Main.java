@@ -1,7 +1,7 @@
 package com.othr.ajp.lambdasstreams;
 
 import java.util.*;
-import java.util.function.Function;
+import static java.util.function.Function.identity;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.*;
@@ -109,7 +109,7 @@ public class Main {
         System.out.println("11. store a Map<Character,Long> with number of cities grouped by their initials (and print to check):");
         Map<Character, Long> result = cities.stream()
                 .map(s -> s.charAt(0))
-                .collect(groupingBy(Function.identity(), counting()));
+                .collect(groupingBy(identity(), counting()));
         result.entrySet().forEach(System.out::println);
         System.out.println("----------------------------------------------------");
 
@@ -117,7 +117,7 @@ public class Main {
         System.out.println("12. as above but do not store but print directly to console:");
         cities.stream()
                 .map(name -> name.charAt(0))
-                .collect(groupingBy(Function.identity(), counting()))
+                .collect(groupingBy(identity(), counting()))
                 .entrySet()
                 .forEach(System.out::println);
         System.out.println("----------------------------------------------------");
@@ -126,7 +126,7 @@ public class Main {
         System.out.println("13. as above but print map sorted by value:");
         cities.stream()
                 .map(name -> name.charAt(0))
-                .collect(groupingBy(Function.identity(), counting()))
+                .collect(groupingBy(identity(), counting()))
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue())
@@ -139,7 +139,7 @@ public class Main {
                 .map(s -> s.split(""))  // Stream<String[]>
                 .flatMap(Arrays::stream)
                 .sorted()
-                .collect(groupingBy(Function.identity(), counting()))
+                .collect(groupingBy(identity(), counting()))
                 .entrySet()
                 .forEach(System.out::println);
         System.out.println("----------------------------------------------------");
