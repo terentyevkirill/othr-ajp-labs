@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Date;
 
 public class Car extends Vehicle implements Serializable {   // inheritance
+    // can be deserialized if there are changes, that don't change the state
+    public static final long serialVersionUID = 1L;
+
     private String registration;                            // delegation
     private int horsePowers;
     private Manufacturer make;                              // delegation
@@ -22,13 +24,14 @@ public class Car extends Vehicle implements Serializable {   // inheritance
         this.make = make;
     }
 
+
     @Override
     public String toString() {
         return "Car{" +
                 "registration='" + registration + '\'' +
                 ", horsePowers=" + horsePowers +
                 ", make='" + make.toString() + '\'' +
-                ", object=" + super.toString() + '\'' +
+                ", " + super.toString() + '\'' +
                 '}';
     }
 
