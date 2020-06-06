@@ -2,7 +2,7 @@ package com.othr.ajp.serialization;
 
 import java.io.Serializable;
 
-public class Car implements Serializable {
+public class Car implements Serializable{
     private String registration;
     private int horsePowers;
     private String make;
