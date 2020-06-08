@@ -1,19 +1,20 @@
 package com.othr.ajp.serialization;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
 public class Employee extends Person {
-    private int employeeId;
+    private Integer employeeId;
     private String department;
     private BigDecimal salaryPerYear;
     private EmployeeStatus status;
 
 
     public Employee(String[] firstnames, String lastname, String socialSecurityNumber, Date dateOfBirth, Color eyeColor, Address currentAddress, List<Address> formerAdresses,
-                    int employeeId, String department, BigDecimal salaryPerYear, EmployeeStatus status) {
+                    Integer employeeId, String department, BigDecimal salaryPerYear, EmployeeStatus status) {
         super(firstnames, lastname, socialSecurityNumber, dateOfBirth, eyeColor, currentAddress, formerAdresses);
         this.employeeId = employeeId;
         this.department = department;
@@ -21,11 +22,11 @@ public class Employee extends Person {
         this.status = status;
     }
 
-    public int getEmployeeId() {
+    public Integer getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
 
@@ -69,5 +70,16 @@ public class Employee extends Person {
         int result = super.hashCode();
         result = 31 * result + getEmployeeId();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", department='" + department + '\'' +
+                ", salaryPerYear=" + salaryPerYear +
+                ", status=" + status +
+                ", " + super.toString() +
+                '}';
     }
 }

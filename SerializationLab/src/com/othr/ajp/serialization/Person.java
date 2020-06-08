@@ -1,10 +1,13 @@
 package com.othr.ajp.serialization;
 
 import java.awt.Color;
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class Person {
+public class Person implements Serializable {
     private String[] firstnames;
     private String lastname;
     private String socialSecurityNumber;
@@ -92,5 +95,19 @@ public class Person {
     @Override
     public int hashCode() {
         return getSocialSecurityNumber() != null ? getSocialSecurityNumber().hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstnames=" + Arrays.toString(firstnames) +
+                ", lastname='" + lastname + '\'' +
+                ", socialSecurityNumber='" + socialSecurityNumber + '\'' +
+                ", dateOfBirth=" + new SimpleDateFormat("dd-MM-yyyy").format(dateOfBirth) +
+                ", eyeColor=" + eyeColor +
+                ", currentAddress=" + currentAddress +
+                ", formerAdresses=" + formerAdresses +
+                ", " + super.toString() +
+                '}';
     }
 }
