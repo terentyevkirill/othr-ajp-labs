@@ -3,14 +3,17 @@ package com.othr.ajp.serialization;
 import java.awt.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 public class Employee extends Person {
+    static final long serialVersionUID = 1L;
     private Integer employeeId;
     private String department;
     private BigDecimal salaryPerYear;
     private EmployeeStatus status;
+    private Date dateHired;
 
 
     public Employee(String[] firstnames, String lastname, String socialSecurityNumber, Date dateOfBirth, Color eyeColor, Address currentAddress, List<Address> formerAdresses,
@@ -20,6 +23,7 @@ public class Employee extends Person {
         this.department = department;
         this.salaryPerYear = salaryPerYear;
         this.status = status;
+        this.dateHired = new Date();
     }
 
     public Integer getEmployeeId() {
@@ -54,6 +58,7 @@ public class Employee extends Person {
         this.status = status;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -79,6 +84,7 @@ public class Employee extends Person {
                 ", department='" + department + '\'' +
                 ", salaryPerYear=" + salaryPerYear +
                 ", status=" + status +
+                ", dateHired=" + (dateHired != null ? new SimpleDateFormat("dd-MM-yyyy").format(dateHired) : dateHired) +
                 ", " + super.toString() +
                 '}';
     }

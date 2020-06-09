@@ -15,4 +15,6 @@ We can use `java.util.zip` API to compress serialized data, namely `GZIPOutputSt
 #### 6. Can `Externalizable` objects be serialized using the built in serialization mechanism? If so, why or how? If not, why not?
 No, they can't. Because `Externalizable` classes have to implement marshalling and unmarshalling functions manually, and there is no way to call `defaultWriteObject()` or `defaultReadObject()`, 
 because `writeExternal()` and `readExternal()` receive directly `ObjectOutput` or `ObjectInput` objects as parameters, and not the Streams.
-
+#### 7. Improve the Employee class further in order to be able to serialize and deserialize object states of different future versions of Employee class (e.g. add new field dateHired)
+added `static final long serialVersionUID` field, compiled class, serialized. After that brought some changes 
+(new field `dateHired` and changed `toString()` implementation) and performed deserialization. As a result, `dateHired=null`, but serialization was performed. 

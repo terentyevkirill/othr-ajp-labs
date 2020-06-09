@@ -24,49 +24,47 @@ public class Serialization {
                 1234,
                 "Software Development",
                 BigDecimal.valueOf(70000), WORKER);
-
-        Employee employee2 = new Employee(
-                new String[]{"Max", "Maximus"},
-                "Mustermann",
-                "dcba4321",
-                new Date(2000 - 1900, Calendar.JULY, 12),
-                Color.GRAY,
-                new Address("Musterstrasse 1", "66666", "Musterstadt", "Musterland"),
-                List.of(new Address("Dahauplatz 6", "93050", "Regensburg", "Germany")),
-                4321,
-                "Quality Assurance",
-                BigDecimal.valueOf(25000), INTERN);
-
-
-//        System.out.println("ObjectStream:");
-//        System.out.println("Before: " + employee1);
-//        System.out.println("Before: " + employee2);
 //
-//        ObjectOutputStream out = new ObjectOutputStream(
-//                new FileOutputStream(new File("empl.ser")));
-//        out.writeObject(employee1);
-//
-//        ObjectInputStream in = new ObjectInputStream(new FileInputStream("empl.ser"));
-//        employee1 = (Employee) in.readObject();
-//
-//        System.out.println("After: " + employee1);
-//        System.out.println("After: " + employee2);
+//        Employee employee2 = new Employee(
+//                new String[]{"Max", "Maximus"},
+//                "Mustermann",
+//                "dcba4321",
+//                new Date(2000 - 1900, Calendar.JULY, 12),
+//                Color.GRAY,
+//                new Address("Musterstrasse 1", "66666", "Musterstadt", "Musterland"),
+//                List.of(new Address("Dahauplatz 6", "93050", "Regensburg", "Germany")),
+//                4321,
+//                "Quality Assurance",
+//                BigDecimal.valueOf(25000), INTERN);
 
 
-        System.out.println("ByteArrayStream:");
-        System.out.println("Before: " + employee1);
-        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-        GZIPOutputStream zipOut = new GZIPOutputStream(byteOut);
-        ObjectOutputStream out = new ObjectOutputStream(zipOut);
+        System.out.println("ObjectStream:");
+        System.out.println("Before:\t" + employee1);
+
+        ObjectOutputStream out = new ObjectOutputStream(
+                new FileOutputStream(new File("empl.ser")));
         out.writeObject(employee1);
-        out.close();
 
-        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
-        GZIPInputStream zipIn = new GZIPInputStream(byteIn);
-        ObjectInputStream in = new ObjectInputStream(zipIn);
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream("empl.ser"));
         employee1 = (Employee) in.readObject();
-        in.close();
-        System.out.println("After: " + employee1);
-        System.out.println("Size in bytes: " + byteOut.toByteArray().length);
+
+        System.out.println("After:\t" + employee1);
+
+
+//        System.out.println("ByteArrayStream:");
+//        System.out.println("Before:\t" + employee1);
+//        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+//        GZIPOutputStream zipOut = new GZIPOutputStream(byteOut);
+//        ObjectOutputStream out = new ObjectOutputStream(zipOut);
+//        out.writeObject(employee1);
+//        out.close();
+//
+//        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+//        GZIPInputStream zipIn = new GZIPInputStream(byteIn);
+//        ObjectInputStream in = new ObjectInputStream(zipIn);
+//        employee1 = (Employee) in.readObject();
+//        in.close();
+//        System.out.println("After:\t" + employee1);
+//        System.out.println("Size in bytes: " + byteOut.toByteArray().length);
     }
 }
