@@ -12,3 +12,7 @@ We can use `java.util.zip` API to compress serialized data, namely `GZIPOutputSt
 1. `Serializable` provides "automatic" serialization during the runtime. We don't have to perform it manually unless we really need it, and even if we need to deal with some fields manually, other fields can be dealt automatically (by default);
 2. `Externalizable` needs marshalling and unmarshalling functions `writeExternal()` and `readExternal()` to be implemented manually. There is no possibility to perform serialization automatically even for certain fields of simple types;
 3. During `Serializable` deserialization object is re-created entirely from serialized data, without calling a constructor. With `Externalizable`, default empty constructor is called at first to create an empty object.
+#### 6. Can `Externalizable` objects be serialized using the built in serialization mechanism? If so, why or how? If not, why not?
+No, they can't. Because `Externalizable` classes have to implement marshalling and unmarshalling functions manually, and there is no way to call `defaultWriteObject()` or `defaultReadObject()`, 
+because `writeExternal()` and `readExternal()` receive directly `ObjectOutput` or `ObjectInput` objects as parameters, and not the Streams.
+
