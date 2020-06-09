@@ -13,8 +13,8 @@ public class Person implements Serializable {
     private String socialSecurityNumber;
     private Date dateOfBirth;
     private Color eyeColor;
-    private Address currentAddress;
-    private List<Address> formerAdresses;
+    private transient Address currentAddress;
+    private transient List<Address> formerAdresses;
 
     public Person(String[] firstnames, String lastname, String socialSecurityNumber, Date dateOfBirth, Color eyeColor, Address currentAddress, List<Address> formerAdresses) {
         this.firstnames = firstnames;

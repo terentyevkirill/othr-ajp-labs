@@ -6,8 +6,6 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
 
 import static com.othr.ajp.serialization.EmployeeStatus.*;
 
@@ -24,31 +22,35 @@ public class Serialization {
                 1234,
                 "Software Development",
                 BigDecimal.valueOf(70000), WORKER);
-//
-//        Employee employee2 = new Employee(
-//                new String[]{"Max", "Maximus"},
-//                "Mustermann",
-//                "dcba4321",
-//                new Date(2000 - 1900, Calendar.JULY, 12),
-//                Color.GRAY,
-//                new Address("Musterstrasse 1", "66666", "Musterstadt", "Musterland"),
-//                List.of(new Address("Dahauplatz 6", "93050", "Regensburg", "Germany")),
-//                4321,
-//                "Quality Assurance",
-//                BigDecimal.valueOf(25000), INTERN);
+
+        Employee employee2 = new Employee(
+                new String[]{"Max", "Maximus"},
+                "Mustermann",
+                "dcba4321",
+                new Date(2000 - 1900, Calendar.JULY, 12),
+                Color.GRAY,
+                new Address("Musterstrasse 1", "66666", "Musterstadt", "Musterland"),
+                List.of(new Address("Dahauplatz 6", "93050", "Regensburg", "Germany")),
+                4321,
+                "Quality Assurance",
+                BigDecimal.valueOf(25000), INTERN);
 
 
         System.out.println("ObjectStream:");
         System.out.println("Before:\t" + employee1);
+        System.out.println("Before:\t" + employee2);
 
         ObjectOutputStream out = new ObjectOutputStream(
                 new FileOutputStream(new File("empl.ser")));
         out.writeObject(employee1);
+        out.writeObject(employee2);
 
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("empl.ser"));
         employee1 = (Employee) in.readObject();
+        employee2 = (Employee) in.readObject();
 
         System.out.println("After:\t" + employee1);
+        System.out.println("After:\t" + employee2);
 
 
 //        System.out.println("ByteArrayStream:");

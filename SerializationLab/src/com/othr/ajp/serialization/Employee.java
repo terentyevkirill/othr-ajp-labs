@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 
 public class Employee extends Person {
-    static final long serialVersionUID = 1L;
+    static final long serialVersionUID = 2L;
     private Integer employeeId;
     private String department;
-    private BigDecimal salaryPerYear;
+    private transient BigDecimal salaryPerYear;
     private EmployeeStatus status;
     private Date dateHired;
 
