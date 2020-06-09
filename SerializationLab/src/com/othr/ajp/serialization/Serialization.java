@@ -37,21 +37,29 @@ public class Serialization {
                 4321,
                 "Quality Assurance",
                 BigDecimal.valueOf(25000), INTERN);
+        System.out.println("ObjectStream:");
         System.out.println("Before: " + employee1);
         System.out.println("Before: " + employee2);
 
         ObjectOutputStream out = new ObjectOutputStream(
                 new FileOutputStream(new File("empl.ser")));
         out.writeObject(employee1);
-        out.writeObject(employee2);
+//        out.writeObject(employee2);
 
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("empl.ser"));
         employee1 = (Employee) in.readObject();
-        employee2 = (Employee) in.readObject();
+//        employee2 = (Employee) in.readObject();
 
         System.out.println("After: " + employee1);
         System.out.println("After: " + employee2);
 
 
+        System.out.println("ByteArrayStream:");
+        System.out.println("Before: " + employee1);
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+        new ObjectOutputStream(byteOut).writeObject(employee1);
+        employee1 = (Employee) new ObjectInputStream(new ByteArrayInputStream(byteOut.toByteArray())).readObject();
+        System.out.println("After: " + employee1);
+        System.out.println("Size in bytes: " + byteOut.toByteArray().length);
     }
 }

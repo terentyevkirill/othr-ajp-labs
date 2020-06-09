@@ -104,7 +104,6 @@ public class Person implements Serializable {
                 ", lastname='" + lastname + '\'' +
                 ", socialSecurityNumber='" + socialSecurityNumber + '\'' +
                 ", dateOfBirth=" + new SimpleDateFormat("dd-MM-yyyy").format(dateOfBirth) +
-                ", eyeColor=" + eyeColor +
                 ", currentAddress=" + currentAddress +
                 ", formerAdresses=" + formerAdresses +
                 ", " + super.toString() +
